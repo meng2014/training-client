@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<!-- 设备自适应 -->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- 设置ie渲染模式，为了有最佳的效果，请使用edge渲染模式，其他还是10,9,8 -->
+<!-- 按 F12键打开 IE 的调试工具，就可以看到 IE 当前的渲染模式是什么：调试窗口右上侧可查看 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Insert title here</title>
+
+<!-- 核心样式 -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/main.css"> 
+
+<!-- 引入bootstrap.min.js之前要先引入jquery.min.js -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+		<!-- .container 类用于固定宽度并支持响应式布局的容器。 -->
+		<!-- .container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器。 -->
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand"><strong>首都师范大学信息工程学院实训平台</strong></a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+</body>
+</html>

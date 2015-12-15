@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+
+<!-- 设备自适应 -->
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<!-- 设置ie渲染模式，为了有最佳的效果，请使用edge渲染模式，其他还是10,9,8 -->
+<!-- 按 F12键打开 IE 的调试工具，就可以看到 IE 当前的渲染模式是什么：调试窗口右上侧可查看 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+
+<!-- 使用高速模式（webkit 内核），目前只有360浏览器支持此模式。其他国内浏览器都是兼容模式（IE内核） -->
+<meta name="renderer" content="webkit">
+<title>Bootstrap</title>
+
+<!-- 核心样式 -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+
+<link rel="stylesheet" href="css/main.css">
+
+<!-- 引入bootstrap.min.js之前要先引入jquery.min.js -->
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/validate.js"></script>
+</head>
+<style>
+.starter {
+	padding: 0px 15px;
+	text-align: center;
+}
+</style>
+
+<script type="text/javascript">
+	function submitme() {
+		var name = $("#name").val();
+		var password = $("#password").val();
+		if (validateText(name, password)) {
+			var data = $("#login").serializeObject(); 
+			$.ajax({
+				type : "POST",
+				url : baseurl + "/training/user/login",
+				data : JSON.stringify(data),
+				contentType : "application/json",
+				success : function(data) {
+					var json = eval(data);
+					if(json.results.msg == "ok"){
+						location.href = "http://www.baidu.com";
+					}else{
+						alert("验证失败！请检查用户名或密码！");
+					}
+				},
+				error : function(data) {
+					var json = eval(data);
+					alert("error ! data = " + json.results.msg);
+				}
+			});
+			
+			
+			//无法获取form表单提交后返回的数据
+			//form.action赋值
+			/* $("#login").attr("action", "http://localhost:8080/training-server/user/login");
+			$("#login").submit(); */
+			
+			
+			//post方法不能执行回调函数
+			/* $.post("http://localhost:8080/training-server/user/login", 
+					$("#login").serialize(), 
+					function(data) {
+						alert(data)
+					}
+			); */
+			
+		}
+	}
+</script>
+
+
+
+<body>
+	<!-- 引入头文件 -->
+	<!-- <object style="border: 0px" type="text/x-scriptlet" data="header.html"
+		width=100% height=50></object> -->
+
+	<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+
+		<!-- .container 类用于固定宽度并支持响应式布局的容器。 -->
+		<!-- .container-fluid 类用于 100% 宽度，占据全部视口（viewport）的容器。 -->
+		<div class="container">
+			<div class="navbar-header">
+				<a href="#" class="navbar-brand"><strong>首都师范大学信息工程学院实训平台</strong></a>
+			</div>
+			<div id="navbar" class="collapse navbar-collapse">
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li class="active"><a href="#">Home</a></li>
+						<li><a href="#">About</a></li>
+						<li><a href="#">Contact</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Dropdown <span class="caret"></span></a>
+							<ul class="dropdown-menu">
+								<li><a href="#">Action</a></li>
+								<li><a href="#">Another action</a></li>
+								<li><a href="#">Something else here</a></li>
+								<li role="separator" class="divider"></li>
+								<li class="dropdown-header">Nav header</li>
+								<li><a href="#">Separated link</a></li>
+								<li><a href="#">One more separated link</a></li>
+							</ul></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+
+	<div id="headerwrap">
+		<div class="container-fluid" style="margin-top: 100px">
+			<div style="width: 300px; margin: auto;">
+				<form class="well" id="login" name="login" method="post">
+					<div class="starter">
+						<h3>欢迎使用实训平台！</h3>
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control" id="name"
+							name="name" placeholder="请输入用户名">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control" name="password"
+							id="password" placeholder="请输入密码">
+					</div>
+
+					<div class="center-block">
+						<label> <input type="checkbox"> 记住我
+						</label>
+						<button type="submit" class="btn btn-link">忘记密码？</button>
+					</div>
+					<div>
+						<button type="button" class="btn btn-primary"
+							style="width: 120px;" onclick="submitme()">登陆系统</button>
+						<button type="submit" class="btn btn-primary"
+							style="width: 120px;">注册</button>
+						<!-- <button type="submit" class="btn btn-success" style="width: 145px;">登录</button>
+					<button class="btn btn-info" style="width: 145px;" type="submit">注册</button> -->
+					</div>
+
+
+				</form>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>
