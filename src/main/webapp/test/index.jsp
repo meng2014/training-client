@@ -64,7 +64,7 @@ p {
 			$
 					.ajax({
 						type : "GET",
-						url : baseurl + "/training/user/category/001/books",
+						url : baseurl + "/training/user/",
 						contentType : "application/json",
 						success : function(data) {
 							showCategory(data);
